@@ -16,13 +16,13 @@ function RedditProvider({ children }) {
 
   useEffect(() => {
     fetchPosts();
-  });
+  }, [selectedSubreddit, shouldRefreshSubreddit]);
 
   const fetchPosts = () => {
     if (!shouldFetchPosts()) return;
 
     setShouldRefreshSubreddit(false);
-    setIsFetching(false);
+    setIsFetching(true);
 
     getPostsBySubreddit(selectedSubreddit)
       .then(handleFetchSuccess, handleFetchError);
